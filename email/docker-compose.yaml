@@ -1,0 +1,15 @@
+version: '3.9'
+volumes:
+  lvr-email:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/chandra/CodeBase/Laravel/micro-service/email/ #change me (needs full path)
+      o: bind
+
+services:
+  email_queue:
+    build: .
+    volumes:
+      - lvr-email:/app
+    command: 'php artisan serve --host=0.0.0.0'
