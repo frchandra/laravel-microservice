@@ -4,6 +4,7 @@ namespace App\Queues;
 
 use Illuminate\Queue\Queue;
 use Illuminate\Contracts\Queue\Queue as QueueContract;
+use function unserialize;
 use function var_dump;
 
 class KafkaQueue extends Queue implements QueueContract{
@@ -36,7 +37,9 @@ class KafkaQueue extends Queue implements QueueContract{
 
         switch ($message->err) {
             case RD_KAFKA_RESP_ERR_NO_ERROR:
-                var_dump($message->payload);
+                $job = unserialize($message->payload);
+                $job->handle();
+//                var_dump($message->payload);
                 break;
             case RD_KAFKA_RESP_ERR__PARTITION_EOF:
                 echo "No more messages; will wait for more\n";

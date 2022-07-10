@@ -7,9 +7,34 @@ volumes:
       device: /home/chandra/CodeBase/Laravel/micro-service/email/ #change me (needs full path)
       o: bind
 
+  mailhog-maildir:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/chandra/Instalasi/mailhog/maildir #change me (needs full path)
+      o: bind
+
 services:
   email_queue:
     build: .
     volumes:
       - lvr-email:/app
-    command: 'php artisan serve --host=0.0.0.0'
+    command: 'php artisan queue:work'
+    networks:
+      - lvr-microservices
+
+  mailhog:
+    image: mailhog/mailhog
+    environment:
+      MH_STORAGE: maildir
+    volumes:
+      - mailhog-maildir:/maildir
+    ports:
+      - 1025:1025
+      - 8025:8025
+    networks:
+      - lvr-microservices
+
+networks:
+  lvr-microservices:
+

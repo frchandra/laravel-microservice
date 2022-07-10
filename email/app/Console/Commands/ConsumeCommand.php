@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class ConsumeCommand extends Command
+class ConsumeCommand extends Command //this is not use anymore, you can delete Commands/ folder and this file
 {
     protected $signature = 'consume';
 
