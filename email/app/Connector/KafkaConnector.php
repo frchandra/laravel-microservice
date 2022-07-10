@@ -18,14 +18,6 @@ class KafkaConnector implements ConnectorInterface{
         $conf->set('group.id', $config['group_id']);
         $conf->set('auto.offset.reset', 'earliest');
 
-//        $conf->set('bootstrap.servers', env('BOOTSTRAP_SERVER'));
-//        $conf->set('security.protocol', 'SASL_SSL');
-//        $conf->set('sasl.mechanism', 'PLAIN');
-//        $conf->set('sasl.username', env('SASL_USERNAME'));
-//        $conf->set('sasl.password', env('SASL_PASSWORD'));
-//        $conf->set('group.id', 'myGroup');
-//        $conf->set('auto.offset.reset', 'earliest');
-
         $consumer = new \RdKafka\KafkaConsumer($conf);
 
         return new KafkaQueue($consumer);
