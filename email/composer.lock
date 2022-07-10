@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5aa33c4c9c59a25291445d8226153066",
+    "content-hash": "988bd148336d7dba55daba9cf6765bb6",
     "packages": [
         {
             "name": "brick/math",
@@ -65,6 +65,46 @@
                 }
             ],
             "time": "2021-08-15T20:50:18+00:00"
+        },
+        {
+            "name": "chandra/laravel-kafka-dependency",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/frchandra/laravel-kafka-dependency.git",
+                "reference": "302dd78868bc7712f639fc80dfa3a8c266db573f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/frchandra/laravel-kafka-dependency/zipball/302dd78868bc7712f639fc80dfa3a8c266db573f",
+                "reference": "302dd78868bc7712f639fc80dfa3a8c266db573f",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": ">=8.10"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Chandra\\LaravelKafkaDependency\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "frchandra",
+                    "email": "nismara.chandra@gmail.com"
+                }
+            ],
+            "description": "Package for confluent kafka and laravel framework integration",
+            "support": {
+                "source": "https://github.com/frchandra/laravel-kafka-dependency/tree/main",
+                "issues": "https://github.com/frchandra/laravel-kafka-dependency/issues"
+            },
+            "time": "2022-07-10T18:45:12+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -7765,7 +7805,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "chandra/laravel-kafka-dependency": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
