@@ -1,0 +1,49 @@
+version: '3.9'
+
+volumes:
+  lvr-users-be:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/chandra/CodeBase/Laravel/micro-service/users/ #change me (needs full path)
+      o: bind
+
+  lvr-users-db:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/chandra/CodeBase/Laravel/micro-service/users/storage/dbdata #change me (needs full path)
+      o: bind
+
+services:
+  users-backend:
+    container_name: users_ms
+    build: .
+#    ports:
+#      - 8001:8000
+    volumes:
+      - lvr-users-be:/app:Z
+    command: 'php artisan serve --host=0.0.0.0'
+    networks:
+      - lvr-users
+    depends_on:
+      - users-db
+
+  users-db:
+    image: mysql:8.0.28
+    restart: always
+    environment:
+      MYSQL_DATABASE: users
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+    volumes:
+      - lvr-users-db:/var/lib/mysql:Z
+#    ports:
+#      - 33066:3306
+    networks:
+      - lvr-users
+
+networks:
+  lvr-users:
+    name: lvr-users
+

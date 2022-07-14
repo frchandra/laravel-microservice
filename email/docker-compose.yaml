@@ -21,7 +21,8 @@ services:
       - lvr-email:/app
     command: 'php artisan queue:work'
     networks:
-      - lvr-microservices
+      - lvr-email
+
 
   mailhog:
     image: mailhog/mailhog
@@ -33,8 +34,10 @@ services:
       - 1025:1025
       - 8025:8025
     networks:
-      - lvr-microservices
+      - lvr-email
+
 
 networks:
-  lvr-microservices:
+  lvr-email:
+    name: lvr-email
 
