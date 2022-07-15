@@ -1,2 +1,3 @@
-[submodule "./laravel-ambassador/"]
-	url = https://github.com/frchandra/laravel-microsv-monolith-app.git
+[submodule "laravel-microsv-monolith-app"]
+	path = ./laravel-ambassador
+	url = https://github.com/frchandra/laravel-microsv-monolith-app
