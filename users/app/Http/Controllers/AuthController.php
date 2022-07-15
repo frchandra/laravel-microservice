@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use function abort;
 use function compact;
 use function cookie;
 use function response;
@@ -67,4 +68,13 @@ class AuthController extends Controller{
 
         return response($user, Response::HTTP_ACCEPTED); #####
     }
+
+    public function scopeCan(Request $request, $scope){
+        if (!$request->user()->tokenCan($scope)) {
+            abort(401, 'unauthorized');
+        }
+
+        return 'ok';
+    }
+
 }
