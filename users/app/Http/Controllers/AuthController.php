@@ -32,6 +32,13 @@ class AuthController extends Controller{
         }
 
         $user = \Auth::user();
+        $adminLogin = $request->input('scope');
+
+        if ( $adminLogin === 'admin' && !$user->is_admin) {
+            return response([
+                'error' => 'Access Denied!'
+            ], Response::HTTP_UNAUTHORIZED);
+        }
 
         $token = $user->createToken('token', [$request->input('scope')])->plainTextToken;
 

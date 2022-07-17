@@ -1,0 +1,63 @@
+version: '3.9'
+
+volumes:
+  lvr-checkout-be:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/chandra/CodeBase/Laravel/micro-service/checkout/ #change me (needs full path)
+      o: bind
+
+  lvr-checkout-db:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/chandra/CodeBase/Laravel/micro-service/checkout/storage/dbdata #change me (needs full path)
+      o: bind
+
+services:
+  checkout_backend:
+    build: .
+    ports:
+      - 8002:8000
+    volumes:
+      - lvr-checkout-be:/app:Z
+    command: "php artisan serve --host=0.0.0.0"
+    depends_on:
+      - db
+    networks:
+      - checkout
+      - lvr-users
+
+  checkout_queue: #to run multiple command
+    build: .
+    command: "php artisan queue:work"
+    depends_on:
+      - db
+      - checkout_backend
+    networks:
+      - checkout
+
+
+  checkout_db:
+    image: mysql:8.0.28
+    restart: always
+    environment:
+      MYSQL_DATABASE: checkout
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+    volumes:
+      - lvr-checkout-db:/var/lib/mysql:Z
+#    ports:
+#      - 33066:3306
+    networks:
+      - checkout
+
+networks:
+  lvr-users:
+    external:
+      name: lvr-users
+
+  checkout:
+    name: lvr-checkout
+

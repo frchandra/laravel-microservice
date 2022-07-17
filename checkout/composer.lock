@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "988bd148336d7dba55daba9cf6765bb6",
+    "content-hash": "e9025fae9fa89ca7efe84fe9eee254db",
     "packages": [
         {
             "name": "brick/math",
@@ -67,6 +67,63 @@
             "time": "2021-08-15T20:50:18+00:00"
         },
         {
+            "name": "cartalyst/stripe",
+            "version": "v2.4.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cartalyst/stripe.git",
+                "reference": "e75b4d714fec5f034d533e55f5365f0229b5686d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cartalyst/stripe/zipball/e75b4d714fec5f034d533e55f5365f0229b5686d",
+                "reference": "e75b4d714fec5f034d533e55f5365f0229b5686d",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6.0|~7.0",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "component": "package",
+                "branch-alias": {
+                    "dev-master": "2.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Cartalyst\\Stripe\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Cartalyst LLC",
+                    "email": "help@cartalyst.com",
+                    "homepage": "https://cartalyst.com"
+                }
+            ],
+            "description": "A comprehensive Stripe API package.",
+            "keywords": [
+                "cartalyst",
+                "php",
+                "stripe"
+            ],
+            "support": {
+                "issues": "https://github.com/cartalyst/stripe/issues",
+                "source": "https://github.com/cartalyst/stripe/tree/v2.4.6"
+            },
+            "time": "2021-10-09T10:40:49+00:00"
+        },
+        {
             "name": "chandra/laravel-kafka-dependency",
             "version": "dev-main",
             "source": {
@@ -105,6 +162,46 @@
                 "issues": "https://github.com/frchandra/laravel-kafka-dependency/issues"
             },
             "time": "2022-07-10T18:45:12+00:00"
+        },
+        {
+            "name": "chandra/user-dependency",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/frchandra/user-dependency.git",
+                "reference": "f9e9d27fb61bb3148a92c7c143059a1dd8ae378c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/frchandra/user-dependency/zipball/f9e9d27fb61bb3148a92c7c143059a1dd8ae378c",
+                "reference": "f9e9d27fb61bb3148a92c7c143059a1dd8ae378c",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": ">=8.1"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Chandra\\UserDependency\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "frchandra",
+                    "email": "nismara.chandra@gmail.com"
+                }
+            ],
+            "description": "Dependency for connecting with laravel-microservice user microservice",
+            "support": {
+                "source": "https://github.com/frchandra/user-dependency/tree/main",
+                "issues": "https://github.com/frchandra/user-dependency/issues"
+            },
+            "time": "2022-07-15T09:35:43+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -935,16 +1032,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v9.19.0",
+            "version": "v9.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "bbce25bd823133f6a5a724f2d62680b711f1d0df"
+                "reference": "c99868f1c9bf2f5d250993121838db905591864f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/bbce25bd823133f6a5a724f2d62680b711f1d0df",
-                "reference": "bbce25bd823133f6a5a724f2d62680b711f1d0df",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/c99868f1c9bf2f5d250993121838db905591864f",
+                "reference": "c99868f1c9bf2f5d250993121838db905591864f",
                 "shasum": ""
             },
             "require": {
@@ -1110,7 +1207,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-06-28T14:33:19+00:00"
+            "time": "2022-07-13T13:26:22+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -7806,7 +7903,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "chandra/laravel-kafka-dependency": 20
+        "chandra/laravel-kafka-dependency": 20,
+        "chandra/user-dependency": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
