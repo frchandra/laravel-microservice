@@ -1,0 +1,60 @@
+version: '3.9'
+
+volumes:
+  lvr-admin-be:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/chandra/CodeBase/Laravel/micro-service/admin/ #change me (needs full path)
+      o: bind
+
+  lvr-admin-db:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/chandra/CodeBase/Laravel/micro-service/admin/storage/dbdata #change me (needs full path)
+      o: bind
+
+services:
+  admin_backend:
+    build: .
+    ports:
+      - 8004:8000
+    volumes:
+      - lvr-admin-be:/app:Z
+    command: 'php artisan serve --host=0.0.0.0'
+    depends_on:
+      - admin_db
+    networks:
+      - admin
+      - lvr-users
+
+  admin_db:
+    image: mysql:8.0.28
+    restart: always
+    environment:
+      MYSQL_DATABASE: admin
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+    volumes:
+      - lvr-admin-db:/var/lib/mysql:Z
+#    ports:
+#      - 33066:3306
+    networks:
+      - admin
+
+#  redis:
+#    image: redis:6
+#    ports:
+#      - 6379:6379
+#    networks:
+#      - admin
+
+networks:
+  lvr-users:
+    external:
+      name: lvr-users
+
+  admin:
+    name: lvr-admin
+
