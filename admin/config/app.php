@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Facade;
+use Kafka\KafkaServiceProvider;
 
 return [
 
@@ -185,6 +186,8 @@ return [
         /*
          * Package Service Providers...
          */
+
+        \Kafka\KafkaServiceProvider::class,
 
         /*
          * Application Service Providers...

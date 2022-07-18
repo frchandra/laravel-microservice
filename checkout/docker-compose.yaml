@@ -33,7 +33,7 @@ services:
     build: .
     command: "php artisan queue:work"
     depends_on:
-      - db
+      - checkout_db
       - checkout_backend
     networks:
       - checkout

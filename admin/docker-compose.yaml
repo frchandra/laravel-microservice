@@ -29,6 +29,15 @@ services:
       - admin
       - lvr-users
 
+  admin_queue: #to run multiple command
+    build: .
+    command: "php artisan queue:work"
+    depends_on:
+      - admin_db
+      - admin_backend
+    networks:
+      - admin
+
   admin_db:
     image: mysql:8.0.28
     restart: always

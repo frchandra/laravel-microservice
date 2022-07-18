@@ -6,6 +6,8 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "chandra/laravel-kafka-dependency": "dev-main",
+        "chandra/user-dependency": "dev-main",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^2.14.1",
@@ -19,11 +21,23 @@
         "phpunit/phpunit": "^9.5.10",
         "spatie/laravel-ignition": "^1.0"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/frchandra/laravel-kafka-dependency.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/frchandra/user-dependency.git"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "Database\\Seeders\\": "database/seeders/",
+            "Kafka\\": "vendor/chandra/laravel-kafka-dependency/src",
+            "Services\\": "vendor/chandra/user-dependency/src"
         }
     },
     "autoload-dev": {
