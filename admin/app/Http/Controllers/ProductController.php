@@ -36,7 +36,7 @@ class ProductController extends Controller
         $product->update($request->only('title', 'description', 'image', 'price'));
 
 //        event(new ProductUpdatedEvent);
-        ProductUpdated::dispatch($product->toArray())->onQueue('checkout_topic');
+        ProductUpdated::dispatch($product->toArray())->onQueue('checkout_topic');https://images.unsplash.com/photo-1656870735413-1a7c58297e7b?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY1ODE1ODMzOQ&ixlib=rb-1.2.1&q=80&w=300
         ProductUpdated::dispatch($product->toArray())->onQueue('ambassador_topic');
         return response($product, Response::HTTP_ACCEPTED);
     }
